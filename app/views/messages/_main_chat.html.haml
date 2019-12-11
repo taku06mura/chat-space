@@ -1,0 +1,30 @@
+.main_chat
+  .main_chat__group-info
+    .main_chat__group-info__group_box
+      .main_chat__group-info__group_box__group-name
+        aiueo
+      .main_chat__group-info__group_box__member-list
+        member:
+        .main_chat__group-info__group_box__member-list__member
+          takumi
+    .main_chat__group-info__edit-box
+      =link_to "#" do
+        Edit
+  .main_chat__message-list
+    .main_chat__message-list__box
+      .main_chat__message-list__box__data
+        .main_chat__message-list__box__data__user-name
+          takumi
+        .main_chat__message-list__box__data__date
+          2019/12/9(mon)
+      .main_chat__message-list__box__text
+        おはよう〜
+  .main_chat__message-form
+    .main_chat__message-form__new-message           
+      %input.input-box-text{:placeholder => "type a message", :type => "text"}/
+      %label{class: "input-box-image",}
+        = icon('fas', 'image')
+        %input.input-box-image__file{type: "file"}
+      %input.send-btn{:type => "submit", :value => "Send"}/
+
+
