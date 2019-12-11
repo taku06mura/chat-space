@@ -1,8 +1,8 @@
 .side_bar
   .side_bar__user-name
     .side_bar__user-name__top-items
-      .side_bar__user-name__top-items__name
-        name
+      %h3.side_bar__user-name__top-items__name
+        = current_user.name
       %ul.side_bar__user-name__top-items__icons
         %li.side_bar__user-name__top-items__icons__new-group
           = link_to "#" do
