@@ -8,7 +8,7 @@
           = link_to "#" do
             = icon('fas', 'edit')
         %li.side_bar__user-name__top-items__icons__edit-acount
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
   .side_bar__groups
     .side_bar__groups__list
@@ -16,5 +16,4 @@
         あいうえお
       .side_bar__groups__list__message
         まだメッセージがありません
-
 
