@@ -3,7 +3,8 @@
   height: 100vh;
   background-color: #ffffff;
   float: left;
-  &__group-info{
+  &__group-info {
+    box-sizing: border-box;
     height: 100px;
     margin: 0px 40px;
     display: flex;
@@ -13,10 +14,11 @@
       &__group-name {
         font-size: 20px;
         color: #333333;
-        margin-bottom: 15px;
+        // margin-bottom: 15px;
       }
       &__member-list {
         font-size: 12px;
+        margin-top: 15px;
         color: #999999;
         display: flex;
       }
@@ -60,41 +62,41 @@
       }
     }
   }
-  &__message-form {
+  .form {
+    background-color: #DDDDDD;
+    box-sizing: border-box;
     height: 90px;
-    background-color: #d2d2d2;
-    padding: 20px 40px;
-    &__new-message {
-      width: 100%;
+    padding: 20px 50px 20px 40px;
+    &__message {
+      border: none;
+      float: left;
       height: 50px;
-      padding: 0px 40px 0px 10px;
-      position: relative;
-      display: flex;
-      .input-box-text {        
-        height: 50px;          
-        width: 1300px;
-        border-style: none;
-        color: #434a54;
-        font-size: 20px;                  
+      width: calc(100% - 150px);
+    }
+    &__mask {
+      background-color: white;
+      float: left;
+      height: 50px;
+      padding-right: 10px;
+      &__image {
+        font-size: 20px;
+        line-height: 50px;
       }
-      .input-box-image {
-        font-size: 1.3rem;        
-        position: absolute;
-        top: 15px;
-        right: 155px;
-        &__file {
+      .hidden {
         display: none;
-        }
       }
     }
-    .send-btn {
+    &__submit {
       background-color: #38aef0;
-      color: #fafafa;
+      border: none;
+      color: white;
+      float: right;
+      font-size: 16px;
       height: 50px;
-      width: 120px;
       margin-left: 15px;
+      padding: 0 30px;
     }
-  } 
+  }
 }
 
 

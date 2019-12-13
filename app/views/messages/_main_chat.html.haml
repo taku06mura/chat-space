@@ -1,16 +1,18 @@
-.main_chat
+.main_chat  
   .main_chat__group-info
     .main_chat__group-info__group_box
       .main_chat__group-info__group_box__group-name
-        aiueo
-      .main_chat__group-info__group_box__member-list
-        member:
-        .main_chat__group-info__group_box__member-list__member
-          takumi
+        = @group.name
+        .main_chat__group-info__group_box__member-list
+          member:
+          .main_chat__group-info__group_box__member-list__member
+            - @group.users.each do |user|
+              = user.name
     .main_chat__group-info__edit-box
-      =link_to "#" do
+      = link_to edit_group_path(@group.id) do
         Edit
   .main_chat__message-list
+    = render @messages
     .main_chat__message-list__box
       .main_chat__message-list__box__data
         .main_chat__message-list__box__data__user-name
@@ -19,12 +21,13 @@
           2019/12/9(mon)
       .main_chat__message-list__box__text
         おはよう〜
-  .main_chat__message-form
-    .main_chat__message-form__new-message           
-      %input.input-box-text{placeholder: "type a message", type: "text"}/
-      %label{class: "input-box-image",}
-        = icon('fas', 'image')
-        %input.input-box-image__file{type: "file"}
-      %input.send-btn{type: "submit", value: "Send"}/
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
 
 
