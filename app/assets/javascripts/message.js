@@ -57,8 +57,6 @@ $('#new_message').on('submit', function(e){
       $('.main_chat__message-list').append(html);
       $('.main_chat__message-list').animate({ scrollTop: $('.main_chat__message-list')[0].scrollHeight});
       $('.form__submit').prop('disabled', false);
-      
-      
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
@@ -81,8 +79,8 @@ $('#new_message').on('submit', function(e){
         $.each(messages, function(i,message) {
           insertHTML = buildHTML(message); 
           $(".main_chat__message-list").append(insertHTML);
+          $('.main_chat__message-list').animate({scrollTop: $('.main_chat__message-list')[0].scrollHeight}, 'fast');
         });
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       })
       .fail(function () {
         alert('自動更新に失敗しました');
