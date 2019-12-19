@@ -38,13 +38,13 @@
     }
   }
   &__message-list {
-    overflow: auto;
+    overflow: scroll;
     height: calc( 100vh - 190px);
     background-color: #fafafa;
     padding: 35px 40px;
-    &__box {
+    .message{
       padding-bottom: 46px;
-      &__data {
+      .upper-message {
         display: flex;
         margin-bottom: 12px;
         &__user-name {
@@ -57,7 +57,7 @@
           margin-left: 10px;
         }
       }
-      &__text {
+      .lower-message {
         font-size: 14px;
         color: #434A54;
       }
