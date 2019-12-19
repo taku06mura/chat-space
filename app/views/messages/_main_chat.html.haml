@@ -13,12 +13,6 @@
         Edit
   .main_chat__message-list
     = render @messages
-    .main_chat__message-list__box
-      .main_chat__message-list__box__data
-        .main_chat__message-list__box__data__user-name
-          takumi
-        .main_chat__message-list__box__data__date
-      .main_chat__message-list__box__text
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'

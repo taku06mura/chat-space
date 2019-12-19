@@ -8,7 +8,7 @@ $(function(){
              ${message.user_name}
            </div>
            <div class="upper-message__date">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="lower-message">
@@ -17,7 +17,7 @@ $(function(){
            </p>
          </div>
          <img src=${message.image} >
-       </div>`
+       </div>`;
      return html;
    } else {
      var html =
@@ -27,7 +27,7 @@ $(function(){
              ${message.user_name}
            </div>
            <div class="upper-message__date">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="lower-message">
@@ -35,10 +35,11 @@ $(function(){
              ${message.content}
            </p>
          </div>
-       </div>`
+       </div>`;
    };
    return html;
 }
+
 $('#new_message').on('submit', function(e){
   e.preventDefault();
   var formData = new FormData(this);
@@ -63,4 +64,30 @@ $('#new_message').on('submit', function(e){
       alert("メッセージ送信に失敗しました");
     });
   })
+
+
+  var reloadMessages = function () {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      last_message_id = $('.message:last').data("message-id"); 
+
+      $.ajax({ 
+        url: "api/messages", 
+        type: 'get', 
+        dataType: 'json',
+        data: {id: last_message_id} 
+      })
+      .done(function (messages) { 
+        var insertHTML = '';
+        $.each(messages, function(i,message) {
+          insertHTML = buildHTML(message); 
+          $(".main_chat__message-list").append(insertHTML);
+        });
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      })
+      .fail(function () {
+        alert('自動更新に失敗しました');
+      });      
+    }
+  };
+  setInterval(reloadMessages, 7000);
 });
